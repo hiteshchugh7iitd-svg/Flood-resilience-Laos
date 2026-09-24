@@ -15,8 +15,8 @@ of this folder to any static host and open `index.html`.
       SOP-Flood-Response-MOES.pdf   47-page draft SOP, linked from the Draft SOP tab
       site-data.json                district, school and hazard data
       survey.json                   the three questionnaires, items and anonymised answers
-    _ds/industry-.../
-      styles.css, _ds_bundle.js     the design system both pages link
+    ds/
+      styles.css, bundle.js     the design system both pages link
 
 Total about 2.5 MB.
 
