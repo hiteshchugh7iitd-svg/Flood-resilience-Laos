@@ -20,18 +20,18 @@
   <meta property="og:description" content="How flood warnings reach Lao schools, who decides to close them, and why no national system records the decision.">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="ds/styles.css">
-  <script src="ds/bundle.js"></script>
+  <link rel="stylesheet" href="ds-styles.css">
+  <script src="ds-bundle.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@400;600&amp;display=swap" rel="stylesheet">
-  <!-- Site data is fetched from data/site-data.json (resource id siteData); it is
+  <!-- Site data is fetched from site-data.json (resource id siteData); it is
        not inlined here because the map page already carries a copy and two 115 KB
        copies in one page load is wasteful. -->
   <meta name="ext-resource-dependency" content="school-map.html" data-resource-id="mapPage">
-  <meta name="ext-resource-dependency" content="data/site-data.json" data-resource-id="siteData">
-  <meta name="ext-resource-dependency" content="data/SOP-Flood-Response-MOES.pdf" data-resource-id="sopDoc">
+  <meta name="ext-resource-dependency" content="site-data.json" data-resource-id="siteData">
+  <meta name="ext-resource-dependency" content="SOP-Flood-Response-MOES.pdf" data-resource-id="sopDoc">
   <meta name="ext-resource-dependency" content="study-area-map.html" data-resource-id="studyMap">
-  <meta name="ext-resource-dependency" content="data/survey.json" data-resource-id="surveyData">
-  <meta name="ext-resource-dependency" content="ds/styles.css" data-resource-id="dsStyles">
+  <meta name="ext-resource-dependency" content="survey.json" data-resource-id="surveyData">
+  <meta name="ext-resource-dependency" content="ds-styles.css" data-resource-id="dsStyles">
   <style>
     body { margin: 0; }
     a { color: #1f6b7d; }
@@ -1623,15 +1623,15 @@ class Component extends DCLogic {
     studyMapOn: false, fwStage: 3, paperTable: 0, survey: null, surveyError: null, svInst: 'principal', svStage: 'all', svOpen: {} };
 
   componentDidMount() {
-    // District, school and hazard records live in data/site-data.json and are the
+    // District, school and hazard records live in site-data.json and are the
     // page's only source for them, so the register needs the file to load.
     // loadError drives a visible message rather than an empty table.
     const res = (typeof window !== 'undefined' && window.__resources) || {};
-    fetch(res.siteData || 'data/site-data.json')
+    fetch(res.siteData || 'site-data.json')
       .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
       .then(data => this.setState({ data, loadError: null }))
       .catch(e => this.setState({ loadError: String(e && e.message || e) }));
-    fetch(res.surveyData || 'data/survey.json')
+    fetch(res.surveyData || 'survey.json')
       .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
       .then(survey => this.setState({ survey }))
       .catch(e => this.setState({ surveyError: String(e && e.message || e) }));
@@ -2043,7 +2043,7 @@ class Component extends DCLogic {
       tabPaper: navTab('paper'), goPaper: this.go('paper'), goPaperHref: '#paper',
       ...this.frameworkVals(), ...this.paperVals(), ...this.surveyVals(),
       showSop: show('sop'), tabSop: navTab('sop'), goSop: this.go('sop'),
-      sopDocHref: 'data/SOP-Flood-Response-MOES.pdf',
+      sopDocHref: 'SOP-Flood-Response-MOES.pdf',
 
       sopOutline: [
         { n: '01', title: 'Recording a closure', tag: 'LESMIS', href: '#clause-1' },

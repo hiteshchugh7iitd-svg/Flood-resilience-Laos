@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Lao PDR school hazard exposure — GIS</title>
-<link rel="stylesheet" href="ds/styles.css">
+<link rel="stylesheet" href="ds-styles.css">
 <style>
 /* required styles */
 
@@ -1733,7 +1733,7 @@ async function init() {
   const inline = document.getElementById('site-data');
   if (inline) { try { data = JSON.parse(inline.textContent); } catch (e) { data = null; } }
   if (!data) {
-    const url = HASH.get('data') || 'data/site-data.json';
+    const url = HASH.get('data') || 'site-data.json';
     try {
       data = await fetch(url).then(r => r.json());
     } catch (e) {
